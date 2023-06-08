@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>img</h1>
+
+    <img src="resources/images/image.jpg" 
+    alt="이미지" 
+    width="400px" 
+    height="400px">
+
+    <!-- pt : 포인트 (1pt = 0.72인치)
+         px : 픽셀 (해상도별 상대크기)
+         %, em : 지정 / 상속 등에 대한 백분율 (상대크기) -->
+    <a href="index.html">
+        <img src="resources/images/image.jpg" width="'200px" height="200px">
+    </a>
+
+    <img src="resources/images/image.jpg" width="200px" height="200px" usemap="#my">
+
+    <map name="my">
+        <area shape="rect" coords="25, 25, 175, 175" href="index.html">
+    </map>
+</body>
+</html>
