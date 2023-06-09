@@ -1,0 +1,63 @@
+/* 타입 */
+pre{
+    text-align: center;
+}
+
+/* id */
+#s-id01{
+    color:dodgerblue;
+}
+#s-id02{
+    color:violet;
+}
+
+/* class */
+.s-cls01{
+    color:skyblue;
+}
+
+/* 전체 */
+*{
+    color:black;
+}
+
+/* 자식 */
+#atc > p {
+    color:yellow;
+}
+
+/* 인접 */
+span + pre{
+    color:blueviolet;
+}
+
+/* 하위 */
+#atc2 span{
+    background-color: black;
+    color:white;
+}
+
+/* 속성 */
+p[title]{
+    color:coral;
+}
+
+/* 가상 클래스 */
+a:link{
+    color:springgreen;
+    font-size: 20pt;
+}
+a:visited{
+    color:beige;
+}
+a:hover{
+    color:lightgreen;
+    background-color:violet;
+}
+a:active{
+    color:pink
+}
+input:checked{
+    width: 100px;
+    height: 100px;
+}
