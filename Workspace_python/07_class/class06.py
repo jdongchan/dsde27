@@ -1,3 +1,4 @@
+# private 변수와 메서드는 class 내부에서만 사용이 가능하다.
 class HelloPrivate:
     def __init__(self):
         self.public = 'public variable'

@@ -10,7 +10,7 @@ class HelloSelf:
         # 객체마다 따로 가질 수 있는 값
         self.prefix = '안녕하세요,'
     def greetings(self, name):
-        print(f'{self.prefix} {name} {HelloSelf.suffix}')
+        return f'{self.prefix} {name} {HelloSelf.suffix}'
 
 if __name__ == '__main__':
     class02 = HelloSelf() # () : HelloSelf가 가진 생성자를 호출해주세요.
