@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        function searchId(){
+            var doc = document.getElementById('test');
+            console.log(doc);
+            doc.innerHTML = "id 로 탐색!";
+            doc.style.color = 'red';
+        }
+        
+        function searchName(){
+            var doc = document.getElementsByName('test02');
+            doc[1].value='name 으로 탐색!';
+            console.log(doc);
+        }
+
+        function searchTagName(){
+            var doc = document.getElementsByTagName('p');
+            doc[3].innerHTML = 'tag name 으로 탐색!';
+            doc[3].style.color = 'blue';
+            console.log(doc)
+        }
+
+        function searchQS(){
+            // var doc = document.querySelector('#test')
+            // doc.innerHTML = 'querySelector(css 표현식)';
+            
+            var doc = document.querySelectorAll('#test');
+            doc[0].innerHTML = 'querySelectorAll(css 표현식)';
+        }
+    </script>
+</head>
+<body>
+    <!-- Document Object Model -->
+    <!-- DOM 탐색에서 <p>~~</p>를 객체로 가져오는데 이를 node라고 한다. -->
+    <!-- getElements 여러 개 공부해볼 것. -->
+    <p onclick="searchQS()">DOM 탐색</p>
+
+    <p id="test" onclick="searchId();">1. 엘리먼트의 id로 탐색</p>
+
+    <p onclick="searchName()">2. 엘리먼트의 name으로 탐색
+        <br>
+        <input type="text" name="test02"  /><br>
+        <input type="text" name="test02"  /><br>
+        <input type="text" name="test02"  /><br>
+    </p>
+    
+    <p onclick="searchTagName()">3. 엘리먼트의 tag name으로 탐색</p>
+</body>
+</html>

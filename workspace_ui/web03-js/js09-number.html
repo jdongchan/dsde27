@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        function numberObj(){
+            var num01 = 3;
+            // alert(num01 + " : " + typeof(num01));
+            var num02 = new Number(3);
+            // alert(num02 + " : " + typeof(num02))
+
+            // alert(parseInt('1') + 1)
+
+            // NaN : Not a Number
+            // alert(parseInt('a'));
+            var num = prompt('숫자만 입력해 주세요');
+            if (isNaN(num)) {
+                alert('숫자가 아닙니다');
+            } else {
+                alert('숫자입니다');
+            }
+        }
+
+        function randomNum(){
+            // Math.random() : 0.0 <= x < 1.0
+            // Math.floor :
+            // Math.round :
+            // Math.ceil :
+            var min = 10;
+            var max = 100;
+            var ran = Math.round(Math.random() * (max - min) + min);
+            console.log(ran)
+        }
+        
+        function randomBG(){
+            var rnum = function(){
+                return Math.round(Math.random()*256);
+            }
+            // style 색상 표현식 : rgb(256,256,256)
+            document.body.style.backgroundColor='rgb('+rnum()+','+rnum()+','+rnum()+')';
+        }
+
+    </script>
+</head>
+<body>
+    
+    <h1>숫자</h1>
+    <button onclick="numberObj()">숫자</button>
+    <br>
+    <button onclick="randomNum()">랜덤 숫자</button>
+    <br>
+    <button onclick="randomBG()">랜덤 배경색</button>
+
+    <hr>
+    <button onclick="randomCircle();">랜덤 원</button>
+    <br>
+    <button onclick="circleArea();">원의 넓이 / 둘레</button>
+    <br>
+
+    원의 넓이 : <span id="area"></span>
+    <br>
+    원의 둘레 : <span id="len"></span>
+    <br>
+    <br>
+    <div id="circle"></div>
+
+    <style>
+        #circle{
+            border: 1px solid red;
+            display: none;
+        }
+    </style>
+    <script>
+        function randomCircle(){
+            var rnum = Math.floor(Math.random()*200);
+            var circle = document.getElementById('circle')
+
+            circle.style.width = rnum + 'px';
+            circle.style.height = rnum + 'px';
+
+            circle.style.borderRadius = Math.floor(rnum/2) + 'px';
+            
+            circle.style.display = 'block';
+
+        }
+
+        function circleArea(){
+            // 넓이랑 둘레 구해서
+            // id="area" 에는 넓이 / id="len"에는 둘레 넣어서 html에 표시하자
+        }
+    </script>
+
+</body>
+</html>
