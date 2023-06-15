@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- JQuery에서 스타일 지정하는 방법 -->
+    <style>
+        img {
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+
+    <script src="resources/js/jquery-3.7.0.min.js"></script>
+    <!-- 텍스트를 자바스크립트처럼 사용할 것. -->
+    <script type="text/javascript">
+        /*
+
+        jquery 기본 작성법 : css selector
+        얘네들 onload = function(){}과 똑같다.
+        기능 구현 방법 2가지
+        $(document).ready(function(){
+
+        })
+
+        $(function(){
+
+        });
+        */
+        // onload 될 때에 img 태그에 걸려있기 때문에 새로 생긴 img 태그들은 hide가 적용되지 않는다.
+        $(document).ready(function(){
+            $("#click").click(function(){
+                alert("click!");
+            });
+            $("img").click(function(){
+                $(this).hide();
+            });
+        });
+
+        function showImg(){
+            $("img").show();
+        }
+        function resizeImg(){
+            // method chaining
+            // $("img").css("width", "100px").css("height", "100px"); 아래의 방식은 property 방식 key:value
+            $("img").css({"width":"100px", "height":"100px"});
+        }
+
+        function addImg(){
+            // img 태그에서 마지막으로 넘어가고, 그 뒤에 아래의 태그를 삽입하는 작업인듯.
+            $("img").last().after("<img src='resources/imgs/img01.png'>");
+
+        }
+        // $가 실행되는 시점이 현재 상태이기 때문에 몇개이든 간에 모든 img 태그에 적용된다.
+        function toggleImg(){
+            $('img').toggle();
+        }
+
+
+    </script>
+</head>
+<body>
+    
+    <h1 id="click">JQuery : Javascript Library</h1>
+
+    <button onclick="showImg();">이미지 보이기</button>
+    <button onclick="resizeImg();">이미지 축소</button>
+    <button onclick="addImg();">이미지 추가</button>
+    <button onclick="toggleImg();">이미지 숨기기/보이기</button>
+    <br>
+    <br>
+    <div>
+        <img src="resources/imgs/img01.png" alt="">
+    </div>
+</body>
+</html>

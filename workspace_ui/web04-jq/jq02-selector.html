@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script src="resources/js/jquery-3.7.0.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            // j query는 전부 다 가져오기 때문에 하나만 가져오려면 :eq() 사용
+            // div:eq(0)은 div 태그 중 첫번째 것을 가져온다. 
+            $("div:eq(0)").css({"border": "1px solid red", "width": "400px", "height": "200px"});
+            $("#view").css({"border": "1px solid red", "width": "400px", "height": "100px"});
+        });
+        
+        function test01(){
+            $("span").css("color", "red");
+            $("#view").text('$("span").css("color", "red");');
+        }
+
+        function test02(){
+            $("#t1").css("color", "blue");
+            $("#view").text('("#t1").css("color", "blue");')
+        }
+
+        function test03(){
+            $(".t2").css("color", "orange");
+            $("#view").text('$(".t2").css("color", "orange");');
+        }
+
+        function test04(){
+            $("li span").css("color", "violet");
+            $("#view").text('$("li span").css("color", "violet");');
+        }
+
+        function test05(){
+            $("li > span").css("background-color", "aquamarine");
+            $("#view").text('$("li > span").css("background-color", "aquamarine");');
+        }
+
+        function test06(){
+            $("li:nth-child(6)").css("background-color", "yellow");
+            $("#view").text('$("li:nth-child(6)").css("background-color", "yellow");');
+        }
+
+        function test07(){
+            $("li:first-child").css("background-color", "skyblue");
+            $("#view").text('$("li:first-child").css("background-color", "skyblue");')
+        }
+
+        function test08(){
+            $("li:last-child").css({"background-color": "lime", "color": "white"});
+            $("#view").text('$("li.last-child").css({"background-color": "lime", "color": "white"});')
+        }
+
+        function cls(){
+            $("*").css("color", "").css("background-color", "");
+            $("#view").text("");
+        }
+    </script>
+</head>
+<body>
+    
+    <h1 onclick="cls();">selector 표현식</h1>
+
+    <div>
+        <ul>
+            <li><span>tag로 선택하기</span></li>
+            <li id="t1">id로 선택하기</li>
+            <li class="t2">class로 선택하기</li>
+            <li><span>parent child로 선택하기</span></li>
+            <li><b><span>parent &gt; child 로 선택하기</span></b></li>
+            <li>:nth-child로 선택하기</li>
+            <li>:first-child로 선택하기</li>
+            <li>:last-child로 선택하기</li>
+        </ul>
+    </div>
+
+    <div>
+        <button onclick="test01();">tag 선택</button>
+        <button onclick="test02();">id 선택</button>
+        <button onclick="test03();">class 선택</button>
+        <button onclick="test04();">parent child</button>
+        <button onclick="test05();">parent &gt; child</button>
+        <button onclick="test06();">nth-child</button>
+        <button onclick="test07();">first-child</button>
+        <button onclick="test08();">last-child</button>
+    </div>
+    
+    <h2>코드 내용</h2>
+    <div id="view"></div>
+</body>
+</html>

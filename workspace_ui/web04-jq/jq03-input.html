@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="resources/js/jquery-3.7.0.min.js"></script>
+
+    <script>
+        function inputTxt(){
+            var txt = $("input:text").val();
+            alert(txt);
+        }
+
+        function inputRdo(){
+            var rdo = $("input:radio").val();
+            alert(rdo);
+        }
+
+        function inputChk(){
+            var chk = $("input:checkbox").val();
+            alert(chk);
+        }
+
+        $(function(){
+            $("select").change(function(){
+                var selectOption = $("select > option:selected");
+                alert(selectOption.val() + "\n" + $("select > option").index(selectOption));
+            });
+        });
+    </script>
+</head>
+<body>
+    
+    <form action="">
+        <input type="text"><br>
+        <input type="button" value="선택" onclick="inputTxt();">
+        <br><br>
+        <input type="radio" value="radio value" onclick="inputRdo();">radio
+        <br><br>
+        <input type="checkbox" value="check value" onclick="inputChk();">check
+        <br><br>
+        <div id="a"></div>
+        <select>
+            <option value="one">1</option>
+            <option value="two">2</option>
+            <option value="three">3</option>
+        </select>
+    </form>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- $ is not defined 뜨면 jquery 안가져온거. -->
+    <script src="resources/js/jquery-3.7.0.min.js"></script>
+    <script>
+        $(function(){
+            // submit이 작동했을 때
+            $("#signal").submit(function(){
+                if($(".infobox").val() == null || $(".infobox").val() == ""){
+                    $(".error").show();
+                    // false를 안하면 submit 이벤트가 쭉 실행된다.
+                    return false;
+                }
+            });
+
+            $("#confirm").click(function(){
+                // empty(): 모든 childnodes를 삭제한다.
+                $("#result").empty();
+                // name이 chk인 input 중 아무 것도 체크가 되지 않은 경우, '하나 이상 체크해 주세요!!'
+                if ($("input[name=chk]:checked").length == 0) {
+                    alert("하나 이상 체크해 주세요!!");
+                
+                } else {
+                    var total = 0;
+                    // .each(): 객체와 배열 모두를 반복하는 데에 사용되는 함수 0부터 length-1까지 실행. 그 객체를 this로 받는다.
+                    // .eq(): 해당 인덱스에 있는 것 하나 가지고 온다.
+                    // 체크되어 있는 input 객체 중 
+                    $("input[name=chk]:checked").each(function(i){
+                        // var chk = $("input[name=chk]:checked").eq(i);
+                        var chk = $(this);
+                        // next(): 바로 다음 형제 요소를 가지고 온다.
+                        var book = chk.next().text();
+                        var price = chk.val();
+                        // append(): 내용을 match되는 요소에 추가.
+                        $("#result").append(book + " -> 가격: " + price + "<br>");
+                        total += parseInt(price);
+                    });
+                    $("#result").append("총 합 : " + total);
+                }
+            });
+
+            $("input[name=chk]").click(function(){
+                // 1. name이 chk인 체크박스의 길이와 name이 chk인데 check되어 있는 체크박스의 길이가 같다면 전체선택
+                if($("input[name=chk]").length == $("input[name=chk]:checked").length) {
+                    $("input[name=all]").prop("checked", true)
+                }; else {
+                    $("input[name=all]").prop("checked", false);
+                };
+                // 2. 그게 아니라면 전체선택 해제
+            });
+        });
+        
+        function allChk(bool){
+            $("input[name=chk]").each(function(){
+                // console.log(this);
+                // this.checked = bool;
+                $(this).prop("checked", bool);
+            });
+        }
+        // attribute : html <=> prop : 객체
+    </script>
+</head>
+<body>
+    
+    <form action="" id="signal" method="get">
+        <div>
+            <span class="label">User ID</span>
+            <input type="text" class="infobox" name="userid">
+            <span class="error" hidden style="color: red;">반드시 입력하세요!!</span>
+        </div>
+        <input type="submit" class="submit" value="입력">
+
+        <hr>
+
+        <fieldset style="width: 300px">
+            <legend>체크 여부 확인</legend>
+            <input type="checkbox" name="all" onclick="allChk(this.checked);">전체선택
+            <br>
+            <input type="checkbox" name="chk" value="20000"><b>python</b><br>
+            <input type="checkbox" name="chk" value="25000"><b>javascript</b><br>
+            <input type="checkbox" name="chk" value="30000"><b>jquery</b><br>
+
+            <input type="button" value="확인" id="confirm"><br>
+
+            <span>선택한 책 가격</span>
+            <div id="result"></div>
+        </fieldset>
+    </form>
+</body>
+</html>

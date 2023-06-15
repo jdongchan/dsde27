@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="resources/js/jquery-3.7.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("div").find("b").css({"font-size":"30pt", "color":"red"});
+            $("div").children("#chd").text("2.children");
+            console.log($("div").children())
+            $("b").parent().css("background-color", "hotpink");
+            $("p > b").parents("div").css("background-color", "turquoise");
+            $("p").eq(0).next().css({"font-size":"20pt", "color":"white"});
+        });
+    </script>
+</head>
+<body>
+
+    <pre>
+        <b>find("selector")
+            자손들 중에 탐색
+        </b>
+        <b>children("selector")
+            자식들 중에 탐색
+        </b>
+        <b>parent() / parents("selector")
+            부모요소 / 조상
+        </b>
+        <b>next("selector")
+            다음에 나오는 요소
+        </b>
+    </pre>
+    
+    <div>
+        <p><b>1</b></p>
+        <p id="chd">2</p>
+        <p>3</p>
+        <p>4</p>
+        <p>5</p>
+    </div>
+</body>
+</html>

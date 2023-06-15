@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        // 테이블 안에 새로운 행을 삽입하기 위해 값을 입력받아 저장하는 함수
+        function tableVal(){
+            // document 아래 form 내부를 object로 doc에 저장. form이 하나기 때문에 [0] 설정.
+            var doc = document.forms[0];
+            // form 내부에 name이 id, pw, addr, phone인 태그의 값을 변수 vals에 저장.
+            var vals = [doc.id.value, doc.pw.value, doc.addr.value, doc.phone.value];
+            // for과 if 구문을 통해 vals 값 중 하나라도 null이거나 공백이거나 undefined인 경우 alert('입력을 다시~') 경고문 실행
+            for (var i = 0; i < vals.length; i++) {
+                if (vals[i] == null || vals[i] == '' || vals[i] == undefined) {
+                    alert('입력을 다시한번 확인해 주세요!');
+                    return;
+                }
+            }
+            // document 아래 Id가 'addtr'인 요소 아래에 createRow(vals) 실행해 추가한다.
+            document.getElementById('addtr').appendChild(createRow(vals));
+        }
+        // vals를 인자로 받고 새로운 행을 추가하여 값을 입력하는 함수.
+        function createRow(vals){
+            // 'tr' 즉 tablerow 요소를 생성한다.
+            var tr = document.createElement('tr');
+            // for 구문을 통해 vals에 입력된 값의 수만큼 'td'요소를 생성하며,
+            // 그 안에 vals에 입력된 값을 appendChild를 통해 <tr></tr> 사이에 차례대로 삽입한다.
+            // 그리고, 마지막 열에 삭제 버튼을 삽입한다.
+            for (var i = 0; i < vals.length; i++) {
+                // <td></td>생성
+                var td = document.createElement('td');
+                // <td></td> 사이에 vals[i] 저장
+                td.textContent = vals[i];
+                // <tr></tr> 사이에 <td>vals[0]</td> 저장
+                tr.appendChild(td);
+            }
+            // 'td' 요소를 document > body 아래 새로 생성하는 함수를 dTd 변수에 저장
+            var dTd = document.createElement('td');
+            // 새로 생성한 <td></td> 사이에 <input ~ > 즉 delRow(this)를 실행하는 버튼 삽입
+            dTd.innerHTML = "<input type='button' value='삭제' onclick='delRow(this)'>";
+            // dTd를 <tr></tr>사이 가장 마지막에 삽입.
+            tr.appendChild(dTd);
+            // 위 과정을 통해 tr 내에 요소와 내용이 삽입되어 마지막으로 return
+            return tr;
+            /*
+            var tr은 아마 이런 형태를 띌 것이며 addtable 내부에 삽입될 것.
+            <tr>
+                <td>vals[0]</td>
+                ...
+                <td>vals[3]</td>
+            </tr>
+            */
+        }
+        
+        function delRow(ele){
+            // ele의 부모노드의 부모노드를 변수 delTr에 저장
+            var delTr = ele.parentNode.parentNode;
+            console.log(delTr)
+            // Id가 'addtr'인 요소를 object로 하여 변수 tbody에 저장
+            var tbody = document.getElementById('addtr');
+            // tbody의 자식들 중 ele인 자식을 삭제한다. 
+            // 위에서 delRow(this)라고 쓰였기 때문에 this의 부모의 부모 노드인 자식을 삭제한다.
+            // 여기서 this는 <input type ~>을 의미하므로 해당 내용이 있는 노드의
+            // 즉 <tr></tr>이 삭제된다.
+            tbody.removeChild(delTr);
+        }
+
+        
+
+        function deleteVal(){
+            // id가 'addtr'인 요소를 변수 tbody에 저장
+            var tbody = document.getElementById('addtr');
+            // tbody가 자식노드를 가지고 있는 한 작동.
+            while(tbody.hasChildNodes()){
+                // tbody의 가장 마지막 자식을 삭제.
+                tbody.removeChild(tbody.lastChild);
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <form>
+        <table id="intable">
+            <tr>
+                <td>아이디 : </td>
+                <td><input type='text' name='id'></td>
+            </tr>
+            <tr>
+                <td>비밀번호 : </td>
+                <td><input type='text' name='pw'></td>
+            </tr>
+            <tr>
+                <td>주소 : </td>
+                <td><input type='text' name='addr'></td>
+            </tr>
+            <tr>
+                <td>전화번호 : </td>
+                <td><input type="text" name="phone"></td>
+            </tr>
+        </table>
+        <input type="button" value="추가" onclick="tableVal();">
+        <input type="button" value="삭제" onclick="deleteVal();">
+    </form>
+    
+    <div id="addtable">
+        <table border="1" id="ctb">
+            <col width="100px">
+            <col width="100px">
+            <col width="300px">
+            <col width="200px">
+            <col width="100px">
+            <thead>
+                <tr>
+                    <th>아이디</th>
+                    <th>비밀번호</th>
+                    <th>주소</th>
+                    <th>전화번호</th>
+                    <th>삭제</th>
+                </tr>
+            </thead>
+            <tbody id="addtr">
+
+            </tbody>
+        </table>
+
+    </div>
+    
+</body>
+</html>

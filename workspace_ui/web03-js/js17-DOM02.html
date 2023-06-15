@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        function searchParent(){
+            var child02 = document.getElementsByTagName('p')[1];
+            var parent = child02.parentNode;
+            console.log(parent);
+            console.log(typeof(parent));
+            alert(parent.nodeName);
+        }
+
+        function searchChildren(){
+            var div = document.getElementsByTagName('div')[0];
+            
+            var children = div.childNodes;
+            // child03의 배경색을 blue로 바꾸자
+            console.log(children)
+            // 공백, <p>, #text 전부 다 NodeList에 저장이 된다.
+            children[5].style.backgroundColor='blue';
+        }
+    </script>
+</head>
+<body>
+
+    <h1>부모탐색, 자식탐색</h1>
+
+    <div>
+        <p>child01</p>
+        <p>child02</p>
+        <p>child03</p>
+    </div>
+    <button onclick="searchParent();">부모탐색</button>
+    <button onclick="searchChildren();">자식탐색</button>
+    
+</body>
+</html>

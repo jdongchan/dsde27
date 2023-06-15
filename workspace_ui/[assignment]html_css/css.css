@@ -1,0 +1,28 @@
+#header_top{
+    display: flex;
+    height: 22px;
+    padding: 4px 4px 0;
+    margin: 0px;
+    font-size: 15px;
+}
+#main_inner{
+    width: 1151px;
+    height: 64px;
+}
+div{
+    border: 1px dashed blue;
+    margin: 10px;
+}
+#body{
+    height: 400px; 
+}
+#left{
+    width: 48%;
+    height: 90%;
+    float: left;
+}
+#right{
+    width: 48%;
+    height: 90%;
+    float: right;
+}

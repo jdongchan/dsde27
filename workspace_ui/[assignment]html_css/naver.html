@@ -4,14 +4,112 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>KREAM | 한정판 거래의 FLEX</title>
+        <style>
+        div{
+            border: 1px dashed blue;
+            margin: 10px;
+        }
+        .header_top{
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 1280px;
+        }
+        .header_top.top_inner{
+            display: flex;
+            padding: 8px 40px 0;
+            height: 22px;
+        }
+        .header_top.top_inner.top_item{
+            display: flex;
+            height: 22px;
+            padding: 8px 40px 0;
+        }
+        /* 여기 안먹는다; */
+        .header_top.top_inner.top_item.top_link{
+            display: flex;
+            align-items: center;
+            font-size: 12px;
+            letter-spacing: -.06px;
+            color: rgba(34,34,34,.8);
+        }
+        .main_inner{
+            display: flex;
+            padding: 20px 40px;
+            height: 64px;
+            min-width: 320px;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .main_inner.logo{
+            display: flex;
+            width: 120px;
+            height: 24px;
+        }
+        .main_inner.right{
+            display: flex;
+            min-width: 120px;
+            flex-shrink: 0;
+            justify-content: flex-end;
+        }
+        
+        #body{
+            height: 400px; 
+        }
+        #left{
+            width: 48%;
+            height: 90%;
+            float: left;
+        }
+        .footer{
+            width:1151px;
+        }
+
+        
+    </style>
+
 </head>
 <body>
-    <div id="topAsideArea" class="menu_area">
-        <button id="topAsideButton" type="button" class="btn_menu" aria-haspopup="menu" aria-expanded="false">
-            
-        </button>
+    <!-- 맨 꼭대기 -->
+    <div class="header_top">
+        <div class="top_inner">
+            <div class="top_item">
+                <a href='#' class="top_link">고객센터</a>
+                <a href='#' class="top_link">마이페이지</a>
+                <a href='#' class="top_link">관심상품</a>
+                <a href='#' class="top_link">알림</a>
+                <a href='#' class="top_link">로그인</a>    
+            </div>
+        </div>
     </div>
+    <!-- 로고, home style shop 돋보기 -->
+    <div class="main_inner">
+        <!-- 로고 -->
+        <div class="logo">
+            <img src="resources/KREAM_logo.png" alt="KREAM" height="20px" width="116px">
+        </div>
         
+        <!-- home style shop 돋보기 -->
+        <div class="right">
+            <span>HOME</span>
+            <span>STYLE</span>
+            <span>SHOP</span>
+        </div>
+
+        
+    </div>
+    
+    <div id="body">
+        <div id="left">
+            <p>내용1</p>
+        </div>
+        <div id="right">
+            <p>내용2</p>
+        </div>
+    </div>
+    <div class="footer">
+        <address>&copy; KREAM Corp.</address>
+    </div>
+    
 </body>
 </html>
